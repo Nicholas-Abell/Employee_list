@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Components/Header";
 import Employees from "./Components/Employee";
 
 function App() {
 
-  const [employees, setEmployees] = useState([{
+  const [employees, setEmployees] = useState(JSON.parse(localStorage.getItem('employeeList')) || [{
     id: 1,
     fullName: "Bob Jones",
     designation: "JavaScript Developer",
@@ -90,7 +90,7 @@ function App() {
 
   }]);
 
-  const [selectedTeam, setSelectedTeam] = useState('TeamB');
+  const [selectedTeam, setSelectedTeam] = useState(JSON.parse(localStorage.getItem('selectedTeam')) || 'TeamB');
 
   const changeSelectedTeamHandler = (event) => {
     console.log(event.target.value);
@@ -106,6 +106,14 @@ function App() {
         : employee)
     setEmployees(transformedEmployees);
   }
+
+  useEffect(() => {
+    localStorage.setItem('employeeList', JSON.stringify(employees))
+  }, [employees]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedTeam', JSON.stringify(selectedTeam))
+  }, [selectedTeam]);
 
   return (
     <main>

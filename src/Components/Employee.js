@@ -13,6 +13,7 @@ const Employees = ({ employees, selectedTeam, handleEmployeeCardClick, changeSel
                 {employees.map((employee) => (
                     <div
                         className='card'
+                        key={employee.id}
                         style={employee.teamName === selectedTeam
                             ? { border: 'solid red 4px' }
                             : { border: 'solid black' }}>
