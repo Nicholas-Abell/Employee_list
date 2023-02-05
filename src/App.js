@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Header from "./Components/Header";
 import Employees from "./Components/Employee";
+import GroupedTeamMembers from "./Components/GroupedTeamMembers";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
 
@@ -117,14 +119,26 @@ function App() {
 
   return (
     <main>
-      <Header
-        selectedTeam={selectedTeam}
-        teamMemberCount={employees.filter((employee) => employee.teamName === selectedTeam).length} />
-      <Employees
-        employees={employees}
-        selectedTeam={selectedTeam}
-        handleEmployeeCardClick={handleEmployeeCardClick}
-        changeSelectedTeamHandler={changeSelectedTeamHandler} />
+      <Router>
+        <Header
+          selectedTeam={selectedTeam}
+          teamMemberCount={employees.filter((employee) => employee.teamName === selectedTeam).length} />
+        <Routes>
+
+          <Route path="/" element={
+            <Employees
+              employees={employees}
+              selectedTeam={selectedTeam}
+              handleEmployeeCardClick={handleEmployeeCardClick}
+              changeSelectedTeamHandler={changeSelectedTeamHandler} />
+          }>
+          </Route>
+          <Route
+            path="/GroupedTeamMembers"
+            element={<GroupedTeamMembers />}>
+          </Route>
+        </Routes>
+      </Router>
     </main>
   );
 }
