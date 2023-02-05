@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Nav from "./Components/Nav";
 import Header from "./Components/Header";
 import Employees from "./Components/Employee";
 import GroupedTeamMembers from "./Components/GroupedTeamMembers";
@@ -120,11 +121,11 @@ function App() {
   return (
     <main>
       <Router>
+        <Nav />
         <Header
           selectedTeam={selectedTeam}
           teamMemberCount={employees.filter((employee) => employee.teamName === selectedTeam).length} />
         <Routes>
-
           <Route path="/" element={
             <Employees
               employees={employees}
