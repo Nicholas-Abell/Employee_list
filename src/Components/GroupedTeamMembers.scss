@@ -12,13 +12,10 @@ main {
     &__title {
         background-color: gray;
         color: greenyellow;
+        padding: 1rem;
 
         &:hover {
             cursor: pointer;
         }
     }
-}
-
-.collapse {
-    display: hidden !important;
 }
