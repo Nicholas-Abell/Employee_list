@@ -4,6 +4,7 @@ import Header from "./Components/Header";
 import Employees from "./Components/Employee";
 import GroupedTeamMembers from "./Components/GroupedTeamMembers";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import NotFound from "./Components/NotFound";
 
 function App() {
 
@@ -137,6 +138,11 @@ function App() {
           <Route
             path="/GroupedTeamMembers"
             element={<GroupedTeamMembers />}>
+          </Route>
+          <Route
+          path='*'
+          element={<NotFound />}>
+
           </Route>
         </Routes>
       </Router>
