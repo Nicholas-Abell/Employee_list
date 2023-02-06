@@ -27,15 +27,15 @@ const GroupedTeamMembers = ({ employees, selectedTeam, setSelectedTeam }) => {
         return teams;
     }
 
-    const handleTeamClick = (event) => {
-        let transformeGroupData = groupedEmployees.map((groupData) => {
+    function handleTeamClick(event) {
+        let transformeGroupData = groupedEmployees.map(groupData =>
             groupData.team === event.currentTarget.id
                 ? { ...groupData, collapsed: !groupData.collapsed }
                 : groupData
-        })
+        )
 
         setGroupedData(transformeGroupData);
-        setSelectedTeam(currentTarget.id);
+        setSelectedTeam(event.currentTarget.id);
     }
 
     return (

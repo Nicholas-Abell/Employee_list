@@ -1,14 +1,12 @@
 import './Employee.scss';
+import TeamSelector from './TeamSelector';
 
 const Employees = ({ employees, selectedTeam, handleEmployeeCardClick, changeSelectedTeamHandler }) => {
     return (
         <main>
-            <select value={selectedTeam} onChange={changeSelectedTeamHandler}>
-                <option value='TeamA'>TeamA</option>
-                <option value='TeamB'>TeamB</option>
-                <option value='TeamC'>TeamC</option>
-                <option value='TeamD'>TeamD</option>
-            </select>
+            <TeamSelector
+                changeSelectedTeamHandler={changeSelectedTeamHandler}
+            />
             <div className={'card-wrapper'}>
                 {employees.map((employee) => (
                     <div
